@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Form1 from './Components/Form1';
+import Form from './Components/Form';
 import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Form1/>
+    <Form/>
   </React.StrictMode>
 );
 

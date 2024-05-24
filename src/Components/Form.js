@@ -9,12 +9,20 @@ class Form extends React.Component {
     this.state = {
       firstName: "",
       lastName: "",
+      userName:"",
       emailAddress: "",
       password: "",
       passwordConfirmation: "",
+      phoneNumber:"",
+      country:"",
+      city:"",
+      panNumber:"",
+      adharNumber:"",
       firstNameError: "",
       emailAddressError: "",
       passwordError: "",
+      userNameError:"",
+      phoneNumberError:"",
       passwordConfirmationError: "",
       isFormSubmitted: false
     };
@@ -24,11 +32,11 @@ class Form extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.validateFirstName = this.validateFirstName.bind(this);
     this.validateLastName = this.validateLastName.bind(this);
+    this.validateuserName = this.validateuserName.bind(this);
     this.validateEmailAddress = this.validateEmailAddress.bind(this);
     this.validatePassword = this.validatePassword.bind(this);
-    this.validatePasswordConfirmation = this.validatePasswordConfirmation.bind(
-      this
-    );
+    this.validatePasswordConfirmation = this.validatePasswordConfirmation.bind(this);
+    this.validatephoneNumber = this.validatephoneNumber.bind(this);
     this.validateField = this.validateField.bind(this);
   }
 
@@ -55,8 +63,14 @@ class Form extends React.Component {
       "firstName",
       "lastName",
       "emailAddress",
+      "userName",
       "password",
-      "passwordConfirmation"
+      "passwordConfirmation",
+      "phoneNumber",
+      "country",
+      "city",
+      "panNumber",
+      "adharNumber"
     ];
     let isValid = true;
     formFields.forEach(field => {
@@ -74,10 +88,11 @@ class Form extends React.Component {
 
     if (name === "firstName") isValid = this.validateFirstName();
     else if (name === "lastName") isValid = this.validateLastName();
+    else if (name === "username") isValid = this.validateuserName();
     else if (name === "emailAddress") isValid = this.validateEmailAddress();
     else if (name === "password") isValid = this.validatePassword();
-    else if (name === "passwordConfirmation")
-      isValid = this.validatePasswordConfirmation();
+    else if (name === "passwordConfirmation") isValid = this.validatePasswordConfirmation();
+    else if (name === "phoneNumber") isValid = this.validatephoneNumber();
     return isValid;
   }
 
@@ -102,6 +117,17 @@ class Form extends React.Component {
     });
     return lastNameError === "";
   }
+  validateuserName() {
+    let userNameError = "";
+    const value = this.state.userName;
+    if (value.trim() === "") userNameError = "User Name is required";
+
+    this.setState({
+        userNameError
+    });
+    return userNameError === "";
+  }
+
 
   validateEmailAddress() {
     let emailAddressError = "";
@@ -140,6 +166,16 @@ class Form extends React.Component {
     });
     return passwordConfirmationError === "";
   }
+  validatephoneNumber() {
+    let phoneNumberError = "";
+    const value = this.state.phoneNumber;
+    if (value.trim() === "") phoneNumberError = "Phone Number is required";
+
+    this.setState({
+        phoneNumberError
+    });
+    return phoneNumberError === "";
+  }
 
   render() {
     return (
@@ -150,11 +186,13 @@ class Form extends React.Component {
             <h3>Thanks for signing up, find your details below:</h3>
             <div>First Name: {this.state.firstName}</div>
             <div>Last Name: {this.state.lastName}</div>
+            <div>User Name: {this.state.userName}</div>
             <div>Email Address: {this.state.emailAddress}</div>
           </div>
         ) : (
           <div style={{textAlign:"center"}}>
           <form onSubmit={this.handleSubmit} >
+            <span>
             <input
               type="text"
               placeholder="First Name"
@@ -181,6 +219,21 @@ class Form extends React.Component {
             {this.state.lastNameError && (
               <div className="errorMsg">{this.state.lastNameError}</div>
             )}
+            <input
+              type="text"
+              placeholder="User Name"
+              name="userName"
+              value={this.state.userNameName}
+              onChange={this.handleChange}
+              onBlur={this.handleBlur}
+              autoComplete="off"
+            />
+            <br />
+            {this.state.userNameError && (
+              <div className="errorMsg">{this.state.userNameError}</div>
+            )}
+            </span>
+            <span>
             <input
               type="email"
               placeholder="Email Address"
@@ -222,8 +275,68 @@ class Form extends React.Component {
                 {this.state.passwordConfirmationError}
               </div>
             )}
-            <button>Signup</button>
+            </span>
+            <span>
+            <input
+              type="number"
+              placeholder="Phone Number"
+              name="phoneNumber"
+              value={this.state.phoneNumber}
+              onChange={this.handleChange}
+              onBlur={this.handleBlur}
+              autoComplete="off"
+            />
+            <br />
+            {this.state.phoneNumberError && (
+              <div className="errorMsg">{this.state.phoneNumberError}</div>
+            )}
+            <input
+              type="text"
+              placeholder="Country"
+              name="country"
+              value={this.state.country}
+              onChange={this.handleChange}
+              onBlur={this.handleBlur}
+              autoComplete="off"
+            />
+            <br />
+            <input
+              type="text"
+              placeholder="City"
+              name="city"
+              value={this.state.city}
+              onChange={this.handleChange}
+              onBlur={this.handleBlur}
+              autoComplete="off"
+            />
+            <br />
+            </span>
+            <span>
+            <input
+              type="text"
+              placeholder="Pan Number"
+              name="panNumber"
+              value={this.state.panNumber}
+              onChange={this.handleChange}
+              onBlur={this.handleBlur}
+              autoComplete="off"
+            />
+            <br />
+            <input
+              type="text"
+              placeholder="Adhar Number"
+              name="adharNumber"
+              value={this.state.adharNumber}
+              onChange={this.handleChange}
+              onBlur={this.handleBlur}
+              autoComplete="off"
+            />
+            <br />
+            
+            </span>
+            
           </form>
+          <button>Signup</button>
           </div>
         )}
       </div>
