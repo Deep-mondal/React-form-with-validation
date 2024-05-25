@@ -14,21 +14,27 @@ body {
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   animation: fadeIn 1s ease-in-out;
+  width: 80%;
+  max-width: 600px;
 }
 
 h3 {
   text-align: center;
   color: #ff6f61;
 }
-form{
+
+form {
   display: flex;
-}
-form span{
-  margin:10px;
-  padding: 2px;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
-input {
+form span {
+  flex: 1 1 45%;
+  margin: 10px;
+}
+
+input, select {
   width: 100%;
   padding: 10px;
   margin: 10px 0;
@@ -38,7 +44,7 @@ input {
   transition: all 0.3s ease-in-out;
 }
 
-input:focus {
+input:focus, select:focus {
   border-color: #ff6f61;
   box-shadow: 0 0 5px rgba(255, 111, 97, 0.5);
 }

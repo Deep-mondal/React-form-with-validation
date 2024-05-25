@@ -290,25 +290,25 @@ class Form extends React.Component {
             {this.state.phoneNumberError && (
               <div className="errorMsg">{this.state.phoneNumberError}</div>
             )}
-            <input
-              type="text"
-              placeholder="Country"
-              name="country"
-              value={this.state.country}
-              onChange={this.handleChange}
-              onBlur={this.handleBlur}
-              autoComplete="off"
-            />
+            <select>
+            onChange={this.handleChange}
+            onBlur={this.handleBlur}
+            <option value="India">Country</option>
+            <option value="India">India</option>
+            <option value="America">America</option>
+            <option value="Pakisthan">Pakisthan</option>
+            <option value="Bangladesh">Bangladesh</option>
+            </select>
             <br />
-            <input
-              type="text"
-              placeholder="City"
-              name="city"
-              value={this.state.city}
-              onChange={this.handleChange}
-              onBlur={this.handleBlur}
-              autoComplete="off"
-            />
+            <select>
+            onChange={this.handleChange}
+            onBlur={this.handleBlur}
+            <option value="City">City</option>
+            <option value="Delhi">Delhi</option>
+            <option value="California">California</option>
+            <option value="Lahore">Lahore</option>
+            <option value="Dhaka">Dhaka</option>
+            </select>
             <br />
             </span>
             <span>
